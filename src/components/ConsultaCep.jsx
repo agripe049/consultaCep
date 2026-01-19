@@ -1,12 +1,13 @@
 import { useState } from "react";
 import viaCep from "../services/viaCep";
 
-function ConsultaCep () {
+function ConsultaCep() {
     const [cep, setCep] = useState("");
     const [endereco, setEndereco] = useState(null)
     const [erro, setErro] = useState("")
 
     async function buscarCep() {
+        if(!cep) return
         setErro("");
         setEndereco(null);
 
@@ -17,25 +18,34 @@ function ConsultaCep () {
 
         const resultado = await viaCep(cep)
 
-        if(!resultado) {
+        if (!resultado) {
             setErro("CEP não encontrado")
             return
         }
         setEndereco(resultado)
     }
 
+    return (
+        <div>
+            <input
+                type="text"
+                placeholder="Digite o CEP"
+                value={cep}
+                onChange={(e) => setCep(e.target.value)}
+                onBlur={buscarCep} />
 
-  return (
-    <div>
-        <h1>Consulta de CEP</h1>
+            {erro && <p style={{ color: "red" }}>{erro}</p>}
 
-        <input 
-            type="text"
-            placeholder="Digite o CEP"
-            value={cep}
-            onChange={(e) => setCep(e.target.value)} />
-    </div>
-  )
+            {endereco && (
+                <div>
+                    <p><strong>Rua:</strong> {endereco.logradouro}</p>
+                    <p><strong>Bairro:</strong> {endereco.bairro}</p>
+                    <p><strong>Cidade:</strong> {endereco.localidade}</p>
+                    <p><strong>Estado:</strong> {endereco.estado}</p>
+                </div>
+            )}
+        </div>
+    )
 }
 
 export default ConsultaCep;

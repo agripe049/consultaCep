@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import viaCep from "./viaCep";
+import ConsultaCep from "../components/ConsultaCep";
 
 function Teste() {
 
@@ -9,7 +10,11 @@ function Teste() {
 
 
     return (
-        <div>Teste</div>
+        <div>
+            <h1>Consulta CEP</h1>
+            <ConsultaCep />
+        </div>
+        
     )
 }
 
