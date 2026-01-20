@@ -11,7 +11,6 @@ function Teste() {
 
     return (
         <div>
-            <h1>Consulta CEP</h1>
             <ConsultaCep />
         </div>
         

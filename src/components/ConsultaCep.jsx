@@ -1,5 +1,6 @@
 import { useState } from "react";
 import viaCep from "../services/viaCep";
+import './ConsultaCep.css'
 
 function ConsultaCep() {
     const [cep, setCep] = useState("");
@@ -7,37 +8,50 @@ function ConsultaCep() {
     const [erro, setErro] = useState("")
 
     async function buscarCep() {
-        if(!cep) return
-        setErro("");
-        setEndereco(null);
+        const cepLimpo = cep.replace("-", "");
 
-        if (cep.length !== 8) {
-            setErro("Digite um CEP válido com 8 números")
-            return
+        if (cepLimpo.length !== 8) {
+            setErro("CEP inválido")
+            return;
         }
 
-        const resultado = await viaCep(cep)
+        const resultado = await viaCep(cepLimpo)
 
         if (!resultado) {
             setErro("CEP não encontrado")
-            return
+            return;
         }
         setEndereco(resultado)
     }
 
+    function formatarCep(valor) {
+        return valor
+            .replace(/\D/g, "")
+            .replace(/^(\d{5})(\d)/, "$1-$2")
+            .slice(0, 9)
+    }
+
     return (
-        <div>
-            <input
-                type="text"
-                placeholder="Digite o CEP"
-                value={cep}
-                onChange={(e) => setCep(e.target.value)}
-                onBlur={buscarCep} />
+        <div className="container">
+            <h1>Consulta CEP</h1>
+
+            <div className="box">
+                <input
+                    type="text"
+                    placeholder="Digite o CEP"
+                    value={cep}
+                    onChange={(e) => {
+                        const valorFormatado = formatarCep(e.target.value);
+                        setCep(valorFormatado)
+                    }}
+                    onBlur={buscarCep} 
+                />
+            </div>
 
             {erro && <p style={{ color: "red" }}>{erro}</p>}
 
             {endereco && (
-                <div>
+                <div className="resultado">
                     <p><strong>Rua:</strong> {endereco.logradouro}</p>
                     <p><strong>Bairro:</strong> {endereco.bairro}</p>
                     <p><strong>Cidade:</strong> {endereco.localidade}</p>
