@@ -5,8 +5,8 @@ import ConsultaCep from "../components/ConsultaCep";
 function Teste() {
 
     useEffect(() => {
-        viaCep("87250000")
-    }, []);
+        viaCep("30130010")
+    }, []); 
 
 
     return (

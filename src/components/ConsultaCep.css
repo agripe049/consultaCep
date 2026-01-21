@@ -10,6 +10,7 @@
 .container h1 {
     margin-bottom: 20px;
     font-size: 32px;
+    color: #38bdf8;
 }
 
 .box {
@@ -34,7 +35,7 @@ input {
 
 .resultado {
     margin-top: 20px;
-    background-color: #1a1a1a;
+    background-color: #020617;
     padding: 15px;
     border-radius: 8px;
     width: 100%;
@@ -42,6 +43,11 @@ input {
 }
 
 .resultado p {
-    margin-bottom: 6px;
+    margin-bottom: 10px;
     font-size: 18px;
+    color: #38bdf8;
+}
+
+.resultado strong {
+    color: #fff;
 }

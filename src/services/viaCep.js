@@ -7,7 +7,7 @@ async function viaCep(cep) {
 
         if (data.erro) {
             throw new Error('CEP não encontrado')
-        }
+        } 
 
         return data
     } catch (error) {

@@ -7,15 +7,11 @@ function ConsultaCep() {
     const [endereco, setEndereco] = useState(null)
     const [erro, setErro] = useState("")
 
-    async function buscarCep() {
-        const cepLimpo = cep.replace("-", "");
+    async function buscarCep(valorCep) {
+        setErro('');
+        setEndereco(null);
 
-        if (cepLimpo.length !== 8) {
-            setErro("CEP inválido")
-            return;
-        }
-
-        const resultado = await viaCep(cepLimpo)
+        const resultado = await viaCep(valorCep)
 
         if (!resultado) {
             setErro("CEP não encontrado")
@@ -31,6 +27,17 @@ function ConsultaCep() {
             .slice(0, 9)
     }
 
+    function handleChange(e) {
+        const valorFormatado = formatarCep(e.target.value);
+        setCep(valorFormatado);
+
+        const cepLimpo = valorFormatado.replace('-', '');
+
+        if (cepLimpo.length === 8) {
+            buscarCep(cepLimpo)
+        }
+    }
+
     return (
         <div className="container">
             <h1>Consulta CEP</h1>
@@ -40,11 +47,7 @@ function ConsultaCep() {
                     type="text"
                     placeholder="Digite o CEP"
                     value={cep}
-                    onChange={(e) => {
-                        const valorFormatado = formatarCep(e.target.value);
-                        setCep(valorFormatado)
-                    }}
-                    onBlur={buscarCep} 
+                    onChange={handleChange}
                 />
             </div>
 
@@ -52,6 +55,7 @@ function ConsultaCep() {
 
             {endereco && (
                 <div className="resultado">
+                    <p><strong>CEP:</strong> {endereco.cep}</p>
                     <p><strong>Rua:</strong> {endereco.logradouro}</p>
                     <p><strong>Bairro:</strong> {endereco.bairro}</p>
                     <p><strong>Cidade:</strong> {endereco.localidade}</p>
