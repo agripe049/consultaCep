@@ -1,16 +1,75 @@
-# React + Vite
+📍 Consulta CEP — ViaCEP API
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Projeto desenvolvido com o objetivo de praticar consumo de API REST no front-end, utilizando a API pública do ViaCEP para consulta de endereços a partir do CEP.
+A aplicação realiza a busca automaticamente ao digitar um CEP válido, tratando erros e formatando os dados retornados pela API.
 
-Currently, two official plugins are available:
+🚀 Tecnologias utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+React
 
-## React Compiler
+Vite
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+JavaScript (ES6+)
 
-## Expanding the ESLint configuration
+CSS
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+API ViaCEP
+
+Fetch API
+
+📌 Funcionalidades
+
+✅ Consulta de endereço por CEP
+
+✅ Consumo de API REST externa (ViaCEP)
+
+✅ Busca automática ao digitar 8 números
+
+✅ Formatação automática do CEP (00000-000)
+
+✅ Tratamento de erros (CEP inválido ou não encontrado)
+
+✅ Exibição dinâmica dos dados retornados
+
+✅ Layout responsivo (desktop e mobile)
+
+
+🔄 Como funciona
+
+O usuário digita o CEP no campo de busca
+
+O input formata automaticamente o valor
+
+Ao atingir 8 números, a aplicação faz a requisição à API
+
+Os dados retornados (rua, bairro, cidade e estado) são exibidos na tela
+
+Em caso de erro, uma mensagem amigável é apresentada
+
+📷 Preview
+
+<img width="1217" height="921" alt="ConsultaCep" src="https://github.com/user-attachments/assets/99114682-23ea-4b5b-9b08-d6a31929f382" />
+
+🌐 Aplicação online
+
+🔗 Acesse a aplicação:
+👉 https://SEU-LINK-DA-VERCEL.vercel.app
+
+📚 Aprendizados
+
+Neste projeto pratiquei:
+
+Consumo de APIs REST
+
+Manipulação de dados assíncronos (async/await)
+
+Organização de funções de serviço
+
+React Hooks (useState, useEffect)
+
+Tratamento de erros no front-end
+
+Formatação e validação de inputs
+
+Boas práticas de componentização
+
